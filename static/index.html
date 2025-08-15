@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wine Tournament Manager</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <button onclick="showSection('participants', event)" class="nav-btn">Participants</button>
+                <button onclick="showSection('voting', event)" class="nav-btn">Votes</button>
+            </nav>
+        </header>
+
+        <!-- Participants Section -->
+        <section id="participants" class="section active">
+            <h2>Participants Management</h2>
+            <div class="participants-container">
+                <div class="add-participant-form card">
+                    <h3>Add New Participant</h3>
+                    <form id="participant-form">
+                        <div class="form-group">
+                            <label for="participant-name">Participant Name:</label>
+                            <input type="text" id="participant-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="total-wines">Total Wines in Tournament:</label>
+                            <input type="number" id="total-wines" value="20" min="5" required>
+                        </div>
+                        <button type="submit">Generate Wine Assignment</button>
+                    </form>
+
+                    <!-- Wine Assignment Confirmation -->
+                    <div id="wine-assignment" class="assignment-section" style="display: none;">
+                        <h4>Wine Assignment for <span id="assigned-participant-name"></span></h4>
+                        
+                        <!-- Casino Slots -->
+                        <div class="casino-container">
+                            <div class="slots-machine">
+                                <div class="slot" data-slot="0">
+                                    <div class="slot-reel">
+                                        <input type="number" class="slot-input" min="1" max="99" value="1">
+                                    </div>
+                                </div>
+                                <div class="slot" data-slot="1">
+                                    <div class="slot-reel">
+                                        <input type="number" class="slot-input" min="1" max="99" value="1">
+                                    </div>
+                                </div>
+                                <div class="slot" data-slot="2">
+                                    <div class="slot-reel">
+                                        <input type="number" class="slot-input" min="1" max="99" value="1">
+                                    </div>
+                                </div>
+                                <div class="slot" data-slot="3">
+                                    <div class="slot-reel">
+                                        <input type="number" class="slot-input" min="1" max="99" value="1">
+                                    </div>
+                                </div>
+                                <div class="slot" data-slot="4">
+                                    <div class="slot-reel">
+                                        <input type="number" class="slot-input" min="1" max="99" value="1">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="button-group">
+                            <button onclick="confirmParticipant()" class="btn-confirm">Confirm Assignment</button>
+                            <button onclick="regenerateWines()" class="btn-secondary">🎲 Spin Again</button>
+                        </div>
+                    </div>
+
+                    <div id="participant-result" class="result-message" style="display: none;"></div>
+                </div>
+
+                <div class="wine-capacity card">
+                    <h3>Wine Capacity Overview</h3>
+                    <p class="subtitle" id="total-wines-subtitle">Total wines: 20</p>
+                    <div id="wine-capacity-list"></div>
+                </div>
+
+                <div class="participants-list card">
+                    <h3>Wines assignment</h3>
+                    <p class="subtitle" id="total-participants-subtitle">Total participants: 0</p>
+                    <div id="participants-list"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Voting Section -->
+        <section id="voting" class="section">
+            <h2>Votes & Leaderboard</h2>
+            <div class="voting-container">
+                <div class="voting-form card">
+                    <h3>Submit Vote</h3>
+                    <form id="vote-form">
+                        <div class="form-group">
+                            <select id="vote-participant" required>
+                                <option value="">Choose participant...</option>
+                            </select>
+                        </div>
+                        <div id="wine-ranking" style="display: none;">
+                            <div class="voting-casino-container">
+                                <div class="voting-slots-container">
+                                    <!-- 1st Place -->
+                                    <div class="voting-slot-group">
+                                        <label class="voting-slot-label gold">🥇 1st Place (3 points)</label>
+                                        <div class="voting-slot gold-slot">
+                                            <div class="voting-slot-reel">
+                                                <select id="first-place" class="voting-slot-select" required>
+                                                    <option value="">Choose wine...</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 2nd Place -->
+                                    <div class="voting-slot-group">
+                                        <label class="voting-slot-label silver">🥈 2nd Place (2 points)</label>
+                                        <div class="voting-slot silver-slot">
+                                            <div class="voting-slot-reel">
+                                                <select id="second-place" class="voting-slot-select" required>
+                                                    <option value="">Choose wine...</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 3rd Place -->
+                                    <div class="voting-slot-group">
+                                        <label class="voting-slot-label bronze">🥉 3rd Place (1 point)</label>
+                                        <div class="voting-slot bronze-slot">
+                                            <div class="voting-slot-reel">
+                                                <select id="third-place" class="voting-slot-select" required>
+                                                    <option value="">Choose wine...</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn-confirm voting-submit">Vote</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="voting-progress card">
+                    <h3>Voting Progress</h3>
+                    <div class="progress-stats">
+                        <div class="stat-item">
+                            <span class="stat-label">Total Votes:</span>
+                            <span class="stat-value" id="total-votes-progress">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Completion:</span>
+                            <span class="stat-value" id="voting-percentage">0%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" id="progress-bar" style="width: 0%"></div>
+                    </div>
+                    
+                    <div class="participants-voting-status">
+                        <h4>👥 Participants Status</h4>
+                        <div class="participant-pills" id="participant-pills"></div>
+                    </div>
+                </div>
+
+                <div class="leaderboard card">
+                    <h3>🏆 Wine Championship Leaderboard</h3>
+                    <div id="leaderboard-list"></div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>

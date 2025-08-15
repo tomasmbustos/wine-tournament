@@ -1,0 +1,14 @@
+fastapi
+motor
+uvicorn
+Inject
+httpx
+loguru
+pytest
+pytest-asyncio
+deepdiff
+google-cloud-secret-manager
+PyJWT
+python-dateutil
+pytest-cov
+python-decouple

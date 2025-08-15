@@ -1,0 +1,56 @@
+[
+  {
+    "participantId": "a8f14b3b-569d-4ab1-a8ba-603b5abe03cb",
+    "firstPlace": 19,
+    "secondPlace": 15,
+    "thirdPlace": 5
+  },
+  {
+    "participantId": "55195b55-8858-42c6-86a6-dfab0f260902",
+    "firstPlace": 16,
+    "secondPlace": 18,
+    "thirdPlace": 2
+  },
+  {
+    "participantId": "5d7efa72-9b9f-4280-bd3d-56b57345700b",
+    "firstPlace": 19,
+    "secondPlace": 3,
+    "thirdPlace": 1
+  },
+  {
+    "participantId": "b5b42f29-8ce9-4e90-bdba-2fe73699e60a",
+    "firstPlace": 2,
+    "secondPlace": 19,
+    "thirdPlace": 15
+  },
+  {
+    "participantId": "d9023b8b-b98f-402a-8206-2d8938419639",
+    "firstPlace": 6,
+    "secondPlace": 4,
+    "thirdPlace": 17
+  },
+  {
+    "participantId": "120b275d-a2fb-41c4-9d1d-59ccb99e9940",
+    "firstPlace": 1,
+    "secondPlace": 20,
+    "thirdPlace": 11
+  },
+  {
+    "participantId": "7a4d1044-b3c2-429c-adc8-ebdcf0de3ebd",
+    "firstPlace": 7,
+    "secondPlace": 2,
+    "thirdPlace": 19
+  },
+  {
+    "participantId": "f034a6a9-82e0-4742-9cac-542047c3041e",
+    "firstPlace": 8,
+    "secondPlace": 1,
+    "thirdPlace": 17
+  },
+  {
+    "participantId": "0ce93017-0444-4199-b745-4b0c92056752",
+    "firstPlace": 10,
+    "secondPlace": 5,
+    "thirdPlace": 1
+  }
+]
